@@ -1,26 +1,25 @@
-import threading
 import datetime
 import json
+import threading
+
+from Model import SensorData
 from Server import Server
 from gprs.Sim900 import Sim900
 from xbee.Xbee import Xbee
-from Model import SensorData
 
 
 class Client:
 
     def __init__(self):
+        self.apn = {"apn": "string for the apm", "user": "user", "pass": "pass"}
 
-        self.apn_movistar = {"apn": "internet.movistar.com.co", "user": "movistar", "pass": "movistar"}
-        self.apn_comcel = {"apn": "internet.comcel.com.co", "user": "comcel", "pass": "comcel"}
-
-        self.deviceName = "RaspberryTest"
-        self.sensors = ['41046b6f','41046b5d']
+        self.deviceName = "DeviceName"
+        self.sensors = ['xxxxx', 'xxxxx']
         self.sensor_num = len(self.sensors)
         self.interval = 10 # Minutes
 
         self.server = Server()
-        self.gprs = Sim900(self.apn_comcel["apn"])
+        self.gprs = Sim900(self.apn["apn"])
         self.xbee = Xbee(self.sensors)
 
     def loop(self):
@@ -43,4 +42,3 @@ class Client:
         t = threading.Timer(1*60*self.interval, self.loop)  # 1*60*10 para 10 minutos
         t.daemon = True
         t.start()
-

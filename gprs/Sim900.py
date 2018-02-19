@@ -1,12 +1,12 @@
+import RPi.GPIO as GPIO
+import datetime
+import json
 import serial
 import time
-import datetime
-import RPi.GPIO as GPIO  # Libreria Python GPIO
-import json
 
-GPIO.setmode(GPIO.BCM)  # Establecemos el sisetma de numeracion de pins BCM
-GPIO.setup(4, GPIO.OUT)  # Ponemos el Pin GPIO4 como salida
-GPIO.output(4, GPIO.LOW)  # Asignamos el valor 0 a la salida GPIO4
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(4, GPIO.OUT)
+GPIO.output(4, GPIO.LOW)
 
 
 class Sim900:
